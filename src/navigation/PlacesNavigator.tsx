@@ -9,7 +9,7 @@ import { Colors } from '../constants';
 import { IconButton } from '../components/UI/IconButton';
 import plus from '../assets/icons/plus';
 
-type PlacesStackParamList = {
+export type PlacesStackParamList = {
   PlaceList: undefined;
   NewPlace: undefined;
   PlaceDetail: undefined;
