@@ -1,4 +1,4 @@
-# ShopApp
+# App
 
 Simple react-native cli application including some features:
 
