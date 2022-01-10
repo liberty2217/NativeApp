@@ -1,9 +1,6 @@
-export const ADD_PLACE = 'ADD_PLACE';
+import { Place } from '../reducers/places';
 
-export type Place = {
-  id: string;
-  title: string;
-};
+export const ADD_PLACE = 'ADD_PLACE';
 
 export type AddPlaceAction = {
   type: typeof ADD_PLACE;

@@ -1,4 +1,9 @@
-import { AddPlaceAction, ADD_PLACE, Place } from '../actions/places';
+import { AddPlaceAction, ADD_PLACE } from '../actions/places';
+
+export type Place = {
+  id: string;
+  title: string;
+};
 
 type InitialStateType = {
   places: Place[];

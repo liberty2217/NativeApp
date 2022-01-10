@@ -28,7 +28,7 @@ export const NewPlace: React.FC<Props> = (props) => {
     <ScrollView>
       <View style={s.form}>
         <TextInput style={s.textInput} onChangeText={titleChangeHandler} value={titleValue} />
-        <Button title="Save Place" color={Colors.primary} onPress={() => null} />
+        <Button title="Save Place" color={Colors.primary} onPress={savePlaceHandler} />
       </View>
     </ScrollView>
   );

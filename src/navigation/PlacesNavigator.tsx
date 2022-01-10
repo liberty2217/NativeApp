@@ -8,11 +8,12 @@ import { Platform } from 'react-native';
 import { Colors } from '../constants';
 import { IconButton } from '../components/UI/IconButton';
 import plus from '../assets/icons/plus';
+import { Place } from '../store/reducers/places';
 
 export type PlacesStackParamList = {
   PlaceList: undefined;
   NewPlace: undefined;
-  PlaceDetail: undefined;
+  PlaceDetail: { placeTitle: Place['title']; placeId: Place['id'] };
   MapScreen: undefined;
 };
 
@@ -23,15 +24,15 @@ const defualtNavigationOptions = {
   headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primary,
 };
 
-const Place = createNativeStackNavigator<PlacesStackParamList>();
+const PlaceStack = createNativeStackNavigator<PlacesStackParamList>();
 
 export const PlaceNavigator = () => {
   return (
-    <Place.Navigator screenOptions={defualtNavigationOptions}>
-      <Place.Screen
+    <PlaceStack.Navigator screenOptions={defualtNavigationOptions}>
+      <PlaceStack.Screen
         name="PlaceList"
         component={PlaceList}
-        options={({ navigation, route }) => ({
+        options={({ navigation }) => ({
           title: 'All Places',
           headerRight: () => {
             return (
@@ -41,11 +42,15 @@ export const PlaceNavigator = () => {
         })}
       />
 
-      <Place.Screen name="PlaceDetail" component={PlaceDetail} />
+      <PlaceStack.Screen
+        name="PlaceDetail"
+        component={PlaceDetail}
+        options={({ route }) => ({ title: route.params.placeTitle })}
+      />
 
-      <Place.Screen name="NewPlace" component={NewPlace} options={{ title: 'Add Place' }} />
+      <PlaceStack.Screen name="NewPlace" component={NewPlace} options={{ title: 'Add Place' }} />
 
-      <Place.Screen name="MapScreen" component={MapScreen} />
-    </Place.Navigator>
+      <PlaceStack.Screen name="MapScreen" component={MapScreen} />
+    </PlaceStack.Navigator>
   );
 };
