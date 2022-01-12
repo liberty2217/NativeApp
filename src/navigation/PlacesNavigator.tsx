@@ -17,7 +17,7 @@ export type PlacesStackParamList = {
   MapScreen: undefined;
 };
 
-const defualtNavigationOptions = {
+export const defualtNavigationOptions = {
   headerStyle: {
     backgroundColor: Platform.OS === 'android' ? Colors.primary : '',
   },
@@ -36,7 +36,10 @@ export const PlaceNavigator = () => {
           title: 'All Places',
           headerRight: () => {
             return (
-              <IconButton icon={plus({ color: Colors.primary })} onPress={() => navigation.navigate('NewPlace')} />
+              <IconButton
+                icon={plus({ color: Platform.OS === 'android' ? '#fff' : Colors.primary })}
+                onPress={() => navigation.navigate('NewPlace')}
+              />
             );
           },
         })}

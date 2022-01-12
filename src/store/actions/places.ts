@@ -7,11 +7,12 @@ export type AddPlaceAction = {
   placeData: Place;
 };
 
-export const addPlace = (title: Place['title']) => {
+export const addPlace = (title: Place['title'], imageUri: Place['imageUri']) => {
   return {
     type: ADD_PLACE,
     placeData: {
       title: title,
+      imageUri: imageUri,
     },
   };
 };

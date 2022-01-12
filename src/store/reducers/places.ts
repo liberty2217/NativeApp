@@ -3,6 +3,7 @@ import { AddPlaceAction, ADD_PLACE } from '../actions/places';
 export type Place = {
   id: string;
   title: string;
+  imageUri: string;
 };
 
 type InitialStateType = {
@@ -18,9 +19,10 @@ type Action = AddPlaceAction;
 export const placesReducer = (state = initialState, action: Action) => {
   switch (action.type) {
     case ADD_PLACE: {
-      const newPlace = {
+      const newPlace: Place = {
         id: new Date().toString(),
         title: action.placeData.title,
+        imageUri: action.placeData.imageUri,
       };
 
       return {
