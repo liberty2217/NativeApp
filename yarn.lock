@@ -990,8 +990,8 @@ __metadata:
   linkType: hard
 
 "@babel/register@npm:^7.0.0":
-  version: 7.16.8
-  resolution: "@babel/register@npm:7.16.8"
+  version: 7.16.9
+  resolution: "@babel/register@npm:7.16.9"
   dependencies:
     clone-deep: ^4.0.1
     find-cache-dir: ^2.0.0
@@ -1000,7 +1000,7 @@ __metadata:
     source-map-support: ^0.5.16
   peerDependencies:
     "@babel/core": ^7.0.0-0
-  checksum: e6b53de9eff3766cf62397561d3250c1c9da0cd67c5879c439140c42cf5a0a017b69025ec526c015af0b5ae7a50f7df61415be68ff6bb0af78af99a58ba59f85
+  checksum: bbe9552c9e5816aec2bf7d899b43f95fd649714f38d14de48f42c895cc9ef65708f1359f393c235d5f02224c115544aeeb174495682a07734cdf9484ed2e6175
   languageName: node
   linkType: hard
 
@@ -1439,13 +1439,13 @@ __metadata:
   linkType: hard
 
 "@react-native-async-storage/async-storage@npm:^1.15.14":
-  version: 1.15.14
-  resolution: "@react-native-async-storage/async-storage@npm:1.15.14"
+  version: 1.15.15
+  resolution: "@react-native-async-storage/async-storage@npm:1.15.15"
   dependencies:
     merge-options: ^3.0.4
   peerDependencies:
-    react-native: ^0.0.0-0 || ^0.60.6 || ^0.61.5 || ^0.62.2 || ^0.63.2 || ^0.64.0 || ^0.65.0 || ^0.66.0 || 1000.0.0
-  checksum: 1209ba1e4ea4faa2909be133cf647a64200ce9d03a3b42306e4be568f2a8fdf01fa60ba106459f98ae4bf07dd136bf97faed0498da1df76b7ca017936b7d2ba2
+    react-native: ^0.0.0-0 || 0.60 - 0.66 || 1000.0.0
+  checksum: 702de42b47bb6eeb1738ed87962a0f0cd5caa46a1c74d51c9cc79f2bf73a7208647aadd4fccb9f3c0a04f5be7f7db3230b376ed1bf0605b0c9108e6c2f4121af
   languageName: node
   linkType: hard
 
@@ -1948,9 +1948,9 @@ __metadata:
   linkType: hard
 
 "@types/prettier@npm:^2.1.5":
-  version: 2.4.2
-  resolution: "@types/prettier@npm:2.4.2"
-  checksum: 76e230b2d11028af11fe12e09b2d5b10b03738e9abf819ae6ebb0f78cac13d39f860755ce05ac3855b608222518d956628f5d00322dc206cc6d1f2d8d1519f1e
+  version: 2.4.3
+  resolution: "@types/prettier@npm:2.4.3"
+  checksum: b240434daabac54700c862b0bb52a83fec396e0e9c847447119ba41fd8404d79aadfa174e6306fb094b29efadac586344b7606c3a71c286b71755ab2579d54df
   languageName: node
   linkType: hard
 
@@ -1958,6 +1958,13 @@ __metadata:
   version: 15.7.4
   resolution: "@types/prop-types@npm:15.7.4"
   checksum: ef6e1899e59b876c273811b1bd845022fc66d5a3d11cb38a25b6c566b30514ae38fe20a40f67622f362a4f4f7f9224e22d8da101cff3d6e97e11d7b4c307cfc1
+  languageName: node
+  linkType: hard
+
+"@types/react-native-sqlite-storage@npm:^5.0.1":
+  version: 5.0.1
+  resolution: "@types/react-native-sqlite-storage@npm:5.0.1"
+  checksum: 34f554c2ee9048377354aadc5f574679ce0497a26705b4b0213a70fa20a3f23bd2e2f8f6afe12d384a307edd133db95888037402e54abc8d61e9d5e3e5ba4e30
   languageName: node
   linkType: hard
 
@@ -1971,14 +1978,14 @@ __metadata:
   linkType: hard
 
 "@types/react-redux@npm:^7.1.20":
-  version: 7.1.21
-  resolution: "@types/react-redux@npm:7.1.21"
+  version: 7.1.22
+  resolution: "@types/react-redux@npm:7.1.22"
   dependencies:
     "@types/hoist-non-react-statics": ^3.3.0
     "@types/react": "*"
     hoist-non-react-statics: ^3.3.0
     redux: ^4.0.0
-  checksum: 5104e818ef718d2ed454a66da0fd5a61350aa67b948d117f1d93a6135d9808f9f90a60ffcc97a4b008059048cc154a6fc2c24cc57db4e76b6e89e207edb48023
+  checksum: eef458c0cda27eabd8d458b7fc40553aab8d2f218145b896b9059b86d88680ae479079aee13683f2a0f35774f20346b732e91182252402bd8777455e004561c9
   languageName: node
   linkType: hard
 
@@ -3123,9 +3130,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001286":
-  version: 1.0.30001298
-  resolution: "caniuse-lite@npm:1.0.30001298"
-  checksum: 43566732d1b8746e3dfae57f558471c701b26b2c166fb9fc53ad750d83128b2eb680a5e08233717e64055779b408c72d3b2cfad6d4ae33a3e647a11dc1c0d515
+  version: 1.0.30001299
+  resolution: "caniuse-lite@npm:1.0.30001299"
+  checksum: c770f60ebf3e0cc8043ba4db0ebec12d7a595a6b50cb4437c3c5c55b04de9d2413f711f2828be761e8c37bb46b927a8abe6b199b8f0ffc1a34af0ebdee84be27
   languageName: node
   linkType: hard
 
@@ -3888,9 +3895,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.17":
-  version: 1.4.40
-  resolution: "electron-to-chromium@npm:1.4.40"
-  checksum: f86a056ff719cffc66236dab73a08e7c2b3e0b2e6744b6061d9b9daf77f171e9f8cffb188b7938a5efb6aa81db97b19c840e7d65319bf925f62928d7ae3c9fb6
+  version: 1.4.43
+  resolution: "electron-to-chromium@npm:1.4.43"
+  checksum: c096a42ec6af0c22736f7151d1386e6597b125ad9a6379a747e67d33d03b3b2923336dbe17edad0037299e7aa1daa0f3feb726d797375e652b6918c1a467b39a
   languageName: node
   linkType: hard
 
@@ -5300,9 +5307,9 @@ __metadata:
   linkType: hard
 
 "immer@npm:^9.0.7":
-  version: 9.0.11
-  resolution: "immer@npm:9.0.11"
-  checksum: 779a1ef8299a7b5cb3474d5b32adba6bcdde15506aff8c017b7bbcc4adf13ead0f53b8baaf85130c9b8a06d3b8c781a234297de80103633bb8f43ee5b1261546
+  version: 9.0.12
+  resolution: "immer@npm:9.0.12"
+  checksum: bcbec6d76dac65e49068eb67ece4d407116e62b8cde3126aa89c801e408f5047763ba0aeb62f1938c1aa704bb6612f1d8302bb2a86fa1fc60fcc12d8b25dc895
   languageName: node
   linkType: hard
 
@@ -7464,11 +7471,11 @@ __metadata:
   linkType: hard
 
 "nanoid@npm:^3.1.23":
-  version: 3.1.30
-  resolution: "nanoid@npm:3.1.30"
+  version: 3.1.32
+  resolution: "nanoid@npm:3.1.32"
   bin:
     nanoid: bin/nanoid.cjs
-  checksum: 276d0d4b0c41c46aeefec5f09f093e4085a2352d06881c845db22b84f8ef72cc8defae6d76bfb1d8a2a128eb2dec42ab148d16582be4e7754c97905806ef57b6
+  checksum: 7389375c7d9819609366cc7b2bd446c854762617a626d345e5dcdc6629f6571e071c7ba412920148065dbd939dbc5589f9e2734b244c3cb49bbddc96082adcc1
   languageName: node
   linkType: hard
 
@@ -8194,6 +8201,7 @@ __metadata:
     "@types/jest": ^27.0.3
     "@types/react": ^17.0.37
     "@types/react-native": ^0.66.9
+    "@types/react-native-sqlite-storage": ^5.0.1
     "@types/react-test-renderer": ^17.0.1
     "@typescript-eslint/eslint-plugin": ^5.8.0
     "@typescript-eslint/parser": ^5.8.0
@@ -8214,6 +8222,7 @@ __metadata:
     react-native-reanimated: next
     react-native-safe-area-context: ^3.3.2
     react-native-screens: ^3.10.1
+    react-native-sqlite-storage: ^6.0.1
     react-native-svg: ^12.1.1
     react-redux: ^7.2.6
     react-test-renderer: ^17.0.2
@@ -8424,6 +8433,15 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: ab9e4ade4a4ef919ab0f4173653cf0334f4a28037f894758fa1bc4fd49e2029ad8ab391ab1b237b108fc3745a370ce88d9a9b30540aa1a800a18183599c5dc2a
+  languageName: node
+  linkType: hard
+
+"react-native-sqlite-storage@npm:^6.0.1":
+  version: 6.0.1
+  resolution: "react-native-sqlite-storage@npm:6.0.1"
+  peerDependencies:
+    react-native: ">=0.14.0"
+  checksum: 79bd454682beb22cdfb5a234b9d52b454d0451dccf03a3c15b70b9c331b32cf0066703652b0d23707bda9b9b4c8063e92d31084171af3ea647855b5d727746e0
   languageName: node
   linkType: hard
 

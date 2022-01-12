@@ -21,9 +21,6 @@ export const ImgPicker: React.FC<ImgPickerProps> = (props) => {
     const image = await launchCamera(option, (res) => {
       if (res.errorCode) {
         Alert.alert(`${res.errorMessage}`);
-      } else {
-        const data = res.assets;
-        console.log(data);
       }
     });
 

@@ -1,16 +1,23 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FlatList } from 'react-native';
 import { PlaceItem } from '../../components/PlaceItem';
 
 import { PlacesStackParamList } from '../../navigation/PlacesNavigator';
-import { useAppSelector } from '../../store/app/rootReducer';
+import { loadPlaces } from '../../store/actions/places';
+import { useAppDispatch, useAppSelector } from '../../store/app/rootReducer';
 
 type Props = NativeStackScreenProps<PlacesStackParamList, 'PlaceList'>;
 
 export const PlaceList: React.FC<Props> = (props) => {
   const { navigation } = props;
   const places = useAppSelector((state) => state.places.places);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(loadPlaces());
+  }, [dispatch]);
 
   return (
     <FlatList
