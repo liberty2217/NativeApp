@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
-import { ActivityIndicator, Alert, Button, Text, View } from 'react-native';
-import Geolocation from 'react-native-geolocation-service';
+import { ActivityIndicator, Alert, Button, PermissionsAndroid, Platform, Text, View } from 'react-native';
+import Geolocation, { GeoCoordinates } from 'react-native-geolocation-service';
 import { Colors } from '../../constants';
+import { MapPreview } from '../MapPreview';
 import { style as s } from './styles';
+
+export type Location = {
+  lng: GeoCoordinates['longitude'];
+  lat: GeoCoordinates['latitude'];
+};
 
 const getIOSlocationPermission = async () => {
   try {
@@ -11,16 +17,23 @@ const getIOSlocationPermission = async () => {
   } catch (err) {
     console.log(err);
   }
+};
 
-  // console.log(res);
+const getAndroidPermission = async () => {
+  await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION);
 };
 
 export const LocationPicker = () => {
-  const [pickedLocation, setPickedLocation] = useState();
+  const [pickedLocation, setPickedLocation] = useState<Location>({});
+
   const [isFetching, setIsFetching] = useState(false);
 
   const getLocationHandler = async () => {
-    const permission = await getIOSlocationPermission();
+    let permission;
+    if (Platform.OS === 'android') {
+      permission = await getAndroidPermission();
+    }
+    permission = await getIOSlocationPermission();
 
     if (permission !== 'granted') {
       return Alert.alert('Permission is not granted');
@@ -28,25 +41,22 @@ export const LocationPicker = () => {
 
     try {
       setIsFetching(true);
-      const location = await Geolocation.getCurrentPosition(
-        (position) => {
-          console.log('success in getting location');
-          console.log(position);
 
+      Geolocation.getCurrentPosition(
+        (position) => {
+          // success callback with result
+          // set result of getCurrentPosition to our state
           setPickedLocation({
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           });
         },
         (err) => {
-          console.log('fail in getting location');
           console.log(err);
+          // error callback with failed result
         },
         { timeout: 5000 },
       );
-      console.log(location);
-
-      console.log(pickedLocation);
     } catch (err) {
       console.log(err);
       Alert.alert('Could not fetch location', 'Pleace try again later or pick a location on the map', [
@@ -58,9 +68,9 @@ export const LocationPicker = () => {
 
   return (
     <View style={s.locationPicker}>
-      <View style={s.mapPreview}>
+      <MapPreview style={s.mapPreview} location={pickedLocation}>
         {isFetching ? <ActivityIndicator size="large" color={Colors.primary} /> : <Text>No location chosen yet</Text>}
-      </View>
+      </MapPreview>
 
       <Button title="Get User Location" color={Colors.primary} onPress={getLocationHandler} />
     </View>
