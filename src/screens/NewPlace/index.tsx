@@ -2,6 +2,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React, { useState } from 'react';
 import { Button, ScrollView, Text, TextInput, View } from 'react-native';
 import { ImgPicker } from '../../components/ImgPicker';
+import { LocationPicker } from '../../components/LocationPicker';
 import { Colors } from '../../constants';
 import { PlacesStackParamList } from '../../navigation/PlacesNavigator';
 import { addPlace } from '../../store/actions/places';
@@ -38,6 +39,7 @@ export const NewPlace: React.FC<Props> = (props) => {
         <TextInput style={s.textInput} onChangeText={titleChangeHandler} value={titleValue} />
 
         <ImgPicker onImageTaken={imageTakenHandler} />
+        <LocationPicker />
         <Button title="Save Place" color={Colors.primary} onPress={savePlaceHandler} />
       </View>
     </ScrollView>
