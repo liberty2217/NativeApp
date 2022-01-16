@@ -14,7 +14,7 @@ type ScreenProps = {
 export const MapScreen: React.FC<ScreenProps> = (props) => {
   const { navigation, route } = props;
 
-  const { readonly, initialLocation } = route.params;
+  const { readonly, initialLocation } = { ...route.params };
 
   const [selectedLocation, setSelectedLocation] = useState<Location>(initialLocation);
 

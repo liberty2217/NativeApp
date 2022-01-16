@@ -65,7 +65,7 @@ export const PlaceNavigator = () => {
         options={({ route }) => ({
           headerTitle: '',
           headerRight: () => {
-            if (route.params.readonly) {
+            if (route.params?.readonly) {
               return;
             }
             return (
