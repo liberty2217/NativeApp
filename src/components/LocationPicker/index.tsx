@@ -23,7 +23,7 @@ const getIOSlocationPermission = async () => {
 };
 
 const getAndroidPermission = async () => {
-  await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION);
+  await PermissionsAndroid.request('android.permission.ACCESS_FINE_LOCATION');
 };
 
 type LocationPickerProps = {
@@ -51,12 +51,15 @@ export const LocationPicker: React.FC<LocationPickerProps> = (props) => {
     let permission;
     if (Platform.OS === 'android') {
       permission = await getAndroidPermission();
+    } else {
+      permission = await getIOSlocationPermission();
     }
-    permission = await getIOSlocationPermission();
 
-    if (permission !== 'granted') {
-      return Alert.alert('Permission is not granted');
-    }
+    console.log(permission);
+
+    // if (permission !== 'granted') {
+    //   return Alert.alert('Permission is not granted');
+    // }
 
     try {
       setIsFetching(true);
