@@ -16,7 +16,8 @@ export const NewPlace: React.FC<Props> = (props) => {
 
   const [titleValue, setTitleValue] = useState<string>('');
   const [selectedImage, setSelectedImage] = useState<string>('');
-  const [selectedLocation, setSelectedLocation] = useState<Location>();
+  const [selectedLocation, setSelectedLocation] = useState<Location>({});
+
   const dispatch = useAppDispatch();
 
   //1) gather data from child components

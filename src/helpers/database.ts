@@ -47,6 +47,7 @@ export const insertPlace = (
       );
     });
   });
+
   return promise;
 };
 

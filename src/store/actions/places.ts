@@ -31,21 +31,19 @@ export const addPlace = (
     );
 
     if (!response.ok) {
-      throw new Error('Something went wrong!');
+      throw new Error('Something went wrong with geodecode request!');
     }
 
     const resData = await response.json();
 
-    console.log(resData);
-
-    if (!resData.response) {
-      throw new Error('Something went wrong!');
+    if (!resData.results) {
+      throw new Error('Something went wrong with response!');
     }
 
     // get the first address from array of suggested addresses (from lng/ltg picked on map)
     const address = resData.results[0].formatted_address;
 
-    // save in sqlite3
+    // save in sqlite3 and dispatch to reducer
     try {
       const dbResult = await insertPlace(title, imageUri, address, location.lat, location.lng);
 

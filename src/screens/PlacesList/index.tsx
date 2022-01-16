@@ -29,7 +29,7 @@ export const PlaceList: React.FC<Props> = (props) => {
             navigation.navigate('PlaceDetail', { placeTitle: itemData.item.title, placeId: itemData.item.id });
           }}
           title={itemData.item.title}
-          address={''}
+          address={itemData.item.address}
         />
       )}
     />

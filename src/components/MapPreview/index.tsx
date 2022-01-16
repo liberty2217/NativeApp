@@ -7,7 +7,7 @@ import { style as s } from './styles';
 
 type MapPreviewProps = {
   location: Location;
-  children: JSX.Element;
+  children?: JSX.Element;
   style: StyleProp<ViewStyle>;
   onPress: () => void;
 };
