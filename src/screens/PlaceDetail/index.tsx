@@ -23,6 +23,12 @@ export const PlaceDetail: React.FC<Props> = (props) => {
     );
   }
 
+  const selectedLocation = { lat: selectedPlace.coords.lat, lng: selectedPlace.coords.lng };
+
+  const showMapHandler = () => {
+    navigation.navigate('MapScreen', { readonly: true, initialLocation: selectedLocation });
+  };
+
   return (
     <ScrollView contentContainerStyle={s.sav}>
       <Image style={s.image} source={{ uri: selectedPlace.imageUri }} />
@@ -30,7 +36,7 @@ export const PlaceDetail: React.FC<Props> = (props) => {
         <View style={s.addressContainer}>
           <Text style={s.address}>{selectedPlace.address}</Text>
         </View>
-        <MapPreview style={s.mapPreview} location={{ lat: selectedPlace.coords.lat, lng: selectedPlace.coords.lng }} />
+        <MapPreview style={s.mapPreview} location={selectedLocation} onPress={showMapHandler} />
       </View>
     </ScrollView>
   );

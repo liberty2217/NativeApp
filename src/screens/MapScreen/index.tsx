@@ -4,24 +4,34 @@ import MapView, { MapEvent, Marker } from 'react-native-maps';
 import { styles as s } from './styles';
 import { PlacesStackParamList } from '../../navigation/PlacesNavigator';
 import { Location } from '../../components/LocationPicker';
+import { RouteProp } from '@react-navigation/native';
 
 type ScreenProps = {
   navigation: NativeStackNavigationProp<PlacesStackParamList, 'MapScreen'>;
+  route: RouteProp<PlacesStackParamList, 'MapScreen'>;
 };
 
 export const MapScreen: React.FC<ScreenProps> = (props) => {
-  const { navigation } = props;
+  const { navigation, route } = props;
 
-  const [selectedLocation, setSelectedLocation] = useState<Location>();
+  const { readonly, initialLocation } = route.params;
+
+  const [selectedLocation, setSelectedLocation] = useState<Location>(initialLocation);
 
   const mapRegion = {
-    latitude: 37.78,
-    longitude: -122.43,
+    latitude: initialLocation ? initialLocation.lat : 37.78,
+    longitude: initialLocation ? initialLocation.lng : -122.43,
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   };
+
   const selectLocationHandler = (event: MapEvent) => {
     // event is pre-built object of apple/google map data when we click on map
+
+    if (readonly) {
+      return;
+    }
+
     setSelectedLocation({
       lat: event.nativeEvent.coordinate.latitude,
       lng: event.nativeEvent.coordinate.longitude,

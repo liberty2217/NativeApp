@@ -15,7 +15,7 @@ export type PlacesStackParamList = {
   PlaceList: undefined;
   NewPlace: { pickedLocation?: Location };
   PlaceDetail: { placeTitle: Place['title']; placeId: Place['id'] };
-  MapScreen: { saveLocation?: () => void };
+  MapScreen: { saveLocation?: () => void; initialLocation?: Location; readonly: boolean };
 };
 
 export const defualtNavigationOptions = {
@@ -64,11 +64,16 @@ export const PlaceNavigator = () => {
         component={MapScreen}
         options={({ route }) => ({
           headerTitle: '',
-          headerRight: () => (
-            <TouchableOpacity style={styles.headerButton} onPress={route.params?.saveLocation}>
-              <Text style={styles.headerButtonText}>Save</Text>
-            </TouchableOpacity>
-          ),
+          headerRight: () => {
+            if (route.params.readonly) {
+              return;
+            }
+            return (
+              <TouchableOpacity style={styles.headerButton} onPress={route.params?.saveLocation}>
+                <Text style={styles.headerButtonText}>Save</Text>
+              </TouchableOpacity>
+            );
+          },
         })}
       />
     </PlaceStack.Navigator>
