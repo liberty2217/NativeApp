@@ -4,17 +4,18 @@ import { PlaceList } from '../screens/PlacesList';
 import { PlaceDetail } from '../screens/PlaceDetail';
 import { NewPlace } from '../screens/NewPlace';
 import { MapScreen } from '../screens/MapScreen';
-import { Platform } from 'react-native';
+import { Platform, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Colors } from '../constants';
 import { IconButton } from '../components/UI/IconButton';
 import plus from '../assets/icons/plus';
 import { Place } from '../store/reducers/places';
+import { Location } from '../components/LocationPicker';
 
 export type PlacesStackParamList = {
   PlaceList: undefined;
-  NewPlace: undefined;
+  NewPlace: { pickedLocation?: Location };
   PlaceDetail: { placeTitle: Place['title']; placeId: Place['id'] };
-  MapScreen: undefined;
+  MapScreen: { saveLocation?: () => void };
 };
 
 export const defualtNavigationOptions = {
@@ -23,6 +24,11 @@ export const defualtNavigationOptions = {
   },
   headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primary,
 };
+
+const styles = StyleSheet.create({
+  headerButton: { marginHorizontal: 20 },
+  headerButtonText: { fontSize: 20, color: Platform.OS === 'android' ? 'white' : Colors.primary },
+});
 
 const PlaceStack = createNativeStackNavigator<PlacesStackParamList>();
 
@@ -53,7 +59,18 @@ export const PlaceNavigator = () => {
 
       <PlaceStack.Screen name="NewPlace" component={NewPlace} options={{ title: 'Add Place' }} />
 
-      <PlaceStack.Screen name="MapScreen" component={MapScreen} />
+      <PlaceStack.Screen
+        name="MapScreen"
+        component={MapScreen}
+        options={({ route }) => ({
+          headerTitle: '',
+          headerRight: () => (
+            <TouchableOpacity style={styles.headerButton} onPress={route.params?.saveLocation}>
+              <Text style={styles.headerButtonText}>Save</Text>
+            </TouchableOpacity>
+          ),
+        })}
+      />
     </PlaceStack.Navigator>
   );
 };

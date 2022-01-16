@@ -1,7 +1,6 @@
 import React from 'react';
-import { Image, StyleProp, View, ViewStyle } from 'react-native';
-import { GeoCoordinates } from 'react-native-geolocation-service';
-import { Node } from 'typescript';
+import { Image, StyleProp, TouchableOpacity, View, ViewStyle } from 'react-native';
+
 import { vars } from '../../../env';
 import { Location } from '../LocationPicker';
 import { style as s } from './styles';
@@ -10,9 +9,10 @@ type MapPreviewProps = {
   location: Location;
   children: JSX.Element;
   style: StyleProp<ViewStyle>;
+  onPress: () => void;
 };
 export const MapPreview: React.FC<MapPreviewProps> = (props) => {
-  const { location, children, style } = props;
+  const { location, children, style, onPress } = props;
 
   let imagePreviewUrl;
 
@@ -22,8 +22,8 @@ export const MapPreview: React.FC<MapPreviewProps> = (props) => {
   }
 
   return (
-    <View style={[s.mapPreview, style]}>
+    <TouchableOpacity style={[s.mapPreview, style]} onPress={onPress}>
       {Object.keys(location).length === 0 ? children : <Image style={s.mapImage} source={{ uri: imagePreviewUrl }} />}
-    </View>
+    </TouchableOpacity>
   );
 };

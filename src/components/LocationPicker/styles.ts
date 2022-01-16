@@ -11,4 +11,9 @@ export const style = StyleSheet.create({
     borderColor: '#ccc',
     borderWidth: 1,
   },
+  actions: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '100%',
+  },
 });
