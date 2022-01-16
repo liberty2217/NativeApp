@@ -1,4 +1,6 @@
 import { ThunkAction } from '@reduxjs/toolkit';
+import { vars } from '../../../env';
+import { Location } from '../../components/LocationPicker';
 import { fetchPlaces, insertPlace } from '../../helpers/database';
 import { RootState } from '../app/rootReducer';
 import { Place } from '../reducers/places';
@@ -8,6 +10,7 @@ export const SET_PLACES = 'SET_PLACES';
 
 export type ActionAddPlace = {
   type: typeof ADD_PLACE;
+  // add cooords and address
   placeData: Place;
 };
 
@@ -19,10 +22,32 @@ export type ActionSetPlaces = {
 export const addPlace = (
   title: Place['title'],
   imageUri: Place['imageUri'],
+  location: Location,
 ): ThunkAction<void, RootState, unknown, ActionAddPlace> => {
   return async (dispatch) => {
+    //extrach with reverse geolocation api -> converts lng/ltg to real address on map
+    const response = await fetch(
+      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.lat},${location.lng}&key=${vars.googleApiKey}`,
+    );
+
+    if (!response.ok) {
+      throw new Error('Something went wrong!');
+    }
+
+    const resData = await response.json();
+
+    console.log(resData);
+
+    if (!resData.response) {
+      throw new Error('Something went wrong!');
+    }
+
+    // get the first address from array of suggested addresses (from lng/ltg picked on map)
+    const address = resData.results[0].formatted_address;
+
+    // save in sqlite3
     try {
-      const dbResult = await insertPlace(title, imageUri, 'Dummy address', 15.6, 12.3);
+      const dbResult = await insertPlace(title, imageUri, address, location.lat, location.lng);
 
       dispatch({
         type: ADD_PLACE,
@@ -30,6 +55,11 @@ export const addPlace = (
           id: dbResult.insertId.toString(),
           title: title,
           imageUri: imageUri,
+          address: address,
+          coords: {
+            lat: location.lat,
+            lng: location.lng,
+          },
         },
       });
     } catch (err) {
