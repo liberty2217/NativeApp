@@ -18,7 +18,7 @@ Please note:
 
 ## Installation
 
-Use yarn on npm package manager to install NativeApp.
+Use yarn on npm package manager to install dependencies.
 
 ```bash
 yarn install
@@ -49,7 +49,7 @@ For IOS device Pods needs to be installed first. From the root directory open io
 cd ios/ && pod install
 ```
 
-after pods installation run ios emulator from root directory
+after pods installation run ios from root directory
 
 ```bash
 react-native run-ios
