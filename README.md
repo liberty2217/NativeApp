@@ -37,7 +37,7 @@ Add paid Google API key in env.ts file for sending requests. Add this key also i
 `
 ## Emulator launching
 
-For Android after package installation to launch:
+For Android after package installation run:
 
 ```bash
 react-native run-android
