@@ -55,8 +55,6 @@ export const LocationPicker: React.FC<LocationPickerProps> = (props) => {
       permission = await getIOSlocationPermission();
     }
 
-    console.log(permission);
-
     // if (permission !== 'granted') {
     //   return Alert.alert('Permission is not granted');
     // }
